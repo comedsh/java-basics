@@ -17,9 +17,13 @@ public class SpliteratorTest {
 		
 		Iterator<String> iter = arrays.iterator();
 		
-		while(true){
-			System.out.println(iter.next());
-		}
+//		while(true){
+//			System.out.println(iter.next());
+//		}
+		
+		System.out.println( 1 << 10 );
+		System.out.println( 1 << 25 );
+
 		
 	}
 	
@@ -36,8 +40,6 @@ public class SpliteratorTest {
 		Spliterator<String> s1 = list.spliterator();
 		
 		s1.forEachRemaining( e -> {System.out.printf("for each remaining: %s %n", e ); } );
-		
-		
 		
 		Spliterator<String> s2 = s1.trySplit();
 		
