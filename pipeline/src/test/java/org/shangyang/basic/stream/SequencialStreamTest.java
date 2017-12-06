@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -75,6 +77,45 @@ public class SequencialStreamTest {
 	              .findFirst();
 	    
 	    System.out.println( r.get() );		
+		
+	}
+	
+	@Test
+	public void testStream5(){
+		
+		List<Shape> list = new ArrayList<Shape>();
+		
+		Collections.addAll(list, new Shape("RED"), new Shape("BLUE"), new Shape("BLUE"));
+		
+		List<Shape> storage = new ArrayList<Shape>();
+		
+		list.stream()
+		        .filter(s -> s.getColor().equals("BLUE"))
+		        .forEach( s -> { 
+		        	s.setColor("GRAY");
+		        	storage.add(s);
+		        });
+		
+		list.forEach( s -> { System.out.println(s.getColor()); } );
+		
+		storage.forEach( s -> { System.out.println(s.getColor()); } );
+	}
+	
+	class Shape{
+		
+		String color;
+		
+		public Shape(String color){
+			this.color = color;
+		}
+
+		public String getColor() {
+			return color;
+		}
+
+		public void setColor(String color) {
+			this.color = color;
+		}
 		
 	}
 	
